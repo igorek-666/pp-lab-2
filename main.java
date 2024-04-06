@@ -47,7 +47,7 @@ public class main {
 
         return oceny;
     }
-
+//
     public static float sredniaOblicz(float[] oceny) {
         float suma = 0;
 
