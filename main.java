@@ -1,43 +1,60 @@
 import java.util.Scanner;
 
-public class Main {
+public class main {
 
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
 
-        
-        System.out.println("Podaj liczbę przedmiotów: ");
-        int liczbaPrzedmiotow = scanner.nextInt();
+        // Pobiera oceny z przedmiotow
+        System.out.println("Podaj oceny z chemii:");
+        float[] ocenyChemia = ocenaDodaj(scanner);
 
-        for (int i = 0; i < liczbaPrzedmiotow; i++) {
-            // Pobranie nazwy przedmiotu
-            System.out.printf("Podaj nazwę przedmiotu %d: ", i + 1);
-            String nazwaPrzedmiotu = scanner.next();
+        System.out.println("Podaj oceny z biologii:");
+        float[] ocenyBiologia = ocenaDodaj(scanner);
 
-            
-            System.out.printf("Podaj liczbę ocen dla przedmiotu %s: ", nazwaPrzedmiotu);
-            int liczbaOcen = scanner.nextInt();
+        System.out.println("Podaj oceny z elektroniki:");
+        float[] ocenyElektronika = ocenaDodaj(scanner);
 
-            
-            float[] oceny = new float[liczbaOcen];
+        System.out.println("Podaj oceny z fizyki:");
+        float[] ocenyFizyka = ocenaDodaj(scanner);
 
-            // Pobranie ocen
-            for (int j = 0; j < liczbaOcen; j++) {
-                System.out.printf("Podaj ocenę %d dla przedmiotu %s: ", j + 1, nazwaPrzedmiotu);
-                oceny[j] = scanner.nextFloat();
-            }
+        // Oblicza srednia ocen ze wszystkich przedmiotow
+        float sredniaChemia = sredniaOblicz(ocenyChemia);
+        float sredniaBiologia = sredniaOblicz(ocenyBiologia);
+        float sredniaElektronika = sredniaOblicz(ocenyElektronika);
+        float sredniaFizyka = sredniaOblicz(ocenyFizyka);
 
-            // Obliczenie średniej
-            float suma = 0;
-            for (float ocena : oceny) {
-                suma += ocena;
-            }
-            float srednia = suma / oceny.length;
+        // wyswietla srednie ocen z poszczegolnych przedmiotow
+        System.out.println("Średnia ocen z chemii: " + sredniaChemia);
+        System.out.println("Średnia ocen z biologii: " + sredniaBiologia);
+        System.out.println("Średnia ocen z elektroniki: " + sredniaElektronika);
+        System.out.println("Średnia ocen z fizyki: " + sredniaFizyka);
 
-            
-            System.out.println("Przedmiot: " + nazwaPrzedmiotu);
-            System.out.println("Liczba ocen: " + liczbaOcen);
-            System.out.printf("Średnia: %.2f\n", srednia);
+        scanner.close();
+    }
+
+
+    public static float[] ocenaDodaj(Scanner scanner) {
+        System.out.println("Ile ocen chcesz wprowadzić?");
+        int liczbaOcen = scanner.nextInt();
+
+        float[] oceny = new float[liczbaOcen];
+
+        for (int i = 0; i < liczbaOcen; i++) {
+            System.out.println("Podaj ocenę " + (i + 1) + ":");
+            oceny[i] = scanner.nextFloat();
         }
+
+        return oceny;
+    }
+
+    public static float sredniaOblicz(float[] oceny) {
+        float suma = 0;
+
+        for (float ocena : oceny) {
+            suma += ocena;
+        }
+
+        return suma / oceny.length;
     }
 }
