@@ -41,8 +41,15 @@ public class Main {
         float[] oceny = new float[liczbaOcen];
 
         for (int i = 0; i < liczbaOcen; i++) {
-            System.out.println("Podaj ocenę " + (i + 1) + ":");
-            oceny[i] = scanner.nextFloat();
+            float ocena;
+            do {
+                System.out.println("Podaj ocenę " + (i + 1) + ":");
+                ocena = scanner.nextFloat();
+                if (ocena <= 0 || ocena >= 6) {
+                    System.out.println("Ocena musi być dodatnia i mniejsza od 6.");
+                }
+            } while (ocena <= 0 || ocena >= 6);
+            oceny[i] = ocena;
         }
 
         // Wyświetla oceny z tablicy oraz ich sumę
