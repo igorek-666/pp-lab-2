@@ -1,6 +1,6 @@
 import java.util.Scanner;
 
-public class main {
+public class Main {
 
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
@@ -24,7 +24,7 @@ public class main {
         float sredniaElektronika = sredniaOblicz(ocenyElektronika);
         float sredniaFizyka = sredniaOblicz(ocenyFizyka);
 
-        // wyswietla srednie ocen z poszczegolnych przedmiotow
+        // Wyswietla srednie ocen z poszczegolnych przedmiotow
         System.out.println("Średnia ocen z chemii: " + sredniaChemia);
         System.out.println("Średnia ocen z biologii: " + sredniaBiologia);
         System.out.println("Średnia ocen z elektroniki: " + sredniaElektronika);
@@ -45,9 +45,18 @@ public class main {
             oceny[i] = scanner.nextFloat();
         }
 
+        // Wyświetla oceny z tablicy oraz ich sumę
+        System.out.println("Oceny:");
+        float suma = 0;
+        for (float ocena : oceny) {
+            System.out.print(ocena + " ");
+            suma += ocena;
+        }
+        System.out.println("\nSuma ocen: " + suma);
+
         return oceny;
     }
-//
+
     public static float sredniaOblicz(float[] oceny) {
         float suma = 0;
 
