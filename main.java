@@ -1,3 +1,4 @@
+import java.util.Arrays;
 import java.util.Scanner;
 
 public class Main {
@@ -29,6 +30,18 @@ public class Main {
         System.out.println("Średnia ocen z biologii: " + sredniaBiologia);
         System.out.println("Średnia ocen z elektroniki: " + sredniaElektronika);
         System.out.println("Średnia ocen z fizyki: " + sredniaFizyka);
+
+        // Oblicza medianę ocen z poszczególnych przedmiotów
+        float medianaChemia = obliczMedianę(ocenyChemia);
+        float medianaBiologia = obliczMedianę(ocenyBiologia);
+        float medianaElektronika = obliczMedianę(ocenyElektronika);
+        float medianaFizyka = obliczMedianę(ocenyFizyka);
+
+        // Wyswietla medianę ocen z poszczegolnych przedmiotow
+        System.out.println("Mediana ocen z chemii: " + medianaChemia);
+        System.out.println("Mediana ocen z biologii: " + medianaBiologia);
+        System.out.println("Mediana ocen z elektroniki: " + medianaElektronika);
+        System.out.println("Mediana ocen z fizyki: " + medianaFizyka);
 
         scanner.close();
     }
@@ -72,5 +85,15 @@ public class Main {
         }
 
         return suma / oceny.length;
+    }
+
+    public static float obliczMedianę(float[] oceny) {
+        Arrays.sort(oceny);
+        int dlugosc = oceny.length;
+        if (dlugosc % 2 == 0) {
+            return (oceny[dlugosc / 2 - 1] + oceny[dlugosc / 2]) / 2;
+        } else {
+            return oceny[dlugosc / 2];
+        }
     }
 }
